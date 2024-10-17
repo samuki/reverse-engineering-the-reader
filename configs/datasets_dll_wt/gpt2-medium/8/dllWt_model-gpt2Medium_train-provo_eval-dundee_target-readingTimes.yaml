@@ -1,0 +1,50 @@
+experiment_name: "main_full_pass_model-gpt2Medium_train-provo_eval-dundee_target-fpd"
+
+use_wandb: True
+wandb_project_name: "main_full_pass"
+save_scratch: True # If on cluster, whether to save ckpt on scratch space
+
+# Global seed
+seed: 8
+
+# Method
+model: "gpt2-medium"
+method: "deltallh_wt"
+
+# Training settings
+training_kwargs:
+  train_w_random_rts: False  
+  loss: "delta_llh_wt"
+  loss_type: "mse"
+  kl_weight: 0
+  kl_variant: "full"
+
+  learning_rate: 0.000015
+  lr_scheduler_type: "cosine"
+  max_length: 150 # Used for padding
+  optim: "adamw_torch"
+  output_dir: "output"
+  train_batch_size: 1
+  reduction: "mean"
+  accumulation_steps: 2
+  mask_zero_reading_times: True
+  mask_zero_freqs: True
+  # Validation settings
+  do_eval: True
+  eval_batch_size: 1
+  evaluation_strategy: "steps"
+  # Total steps will be eval_steps * total_step_multiplier
+  eval_steps: 50
+  total_steps_mutliplier: 100
+  save_metric: "loss" 
+
+  # Eval dataset
+  eval_dataset: "dundee" 
+  eval_data_path: "data/datasets/dundee_test.csv" 
+  eval_split_size: 0.3
+  # Train dataset 
+  preference_dataset: "provo"
+  data_path: "data/datasets/provo_bos_train.csv"
+
+  train_dataset_target: "first_pass_dur"
+  eval_dataset_target: "first_pass_dur"     # total_fix_dur, first_fix_dur

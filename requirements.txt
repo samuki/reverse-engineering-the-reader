@@ -1,0 +1,16 @@
+datasets==2.20.0
+huggingface-hub==0.21.4
+lm_eval==0.4.2
+matplotlib==3.5.1
+nltk==3.8.1
+numpy==1.24.4
+pandas==1.4.2
+scikit-learn==1.0.2
+scipy==1.8.0
+statsmodels==0.14.2
+torch==2.1.1
+tqdm==4.66.4
+transformers==4.27.0
+wandb==0.16.3
+wordfreq==3.1.1
+git+https://github.com/katsura-jp/pytorch-cosine-annealing-with-warmup
