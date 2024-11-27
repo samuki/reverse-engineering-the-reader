@@ -1,11 +1,10 @@
 # Reverse-Engineering the Reader
 
-This repository contains the code for [Reverse-Engineering the Reader](https://arxiv.org/abs/2410.13086).
+This repository contains the code for our paper [Reverse-Engineering the Reader](https://arxiv.org/abs/2410.13086), where we introduce a technique for aligning language models to human psychometric data.
 
-<p align="left">
-  <img src="reverse-engineering-reader-visual.png" width="400">
+<p align="center">
+  <img src="reverse-engineering-reader-visual.png" width="550">
 </p>
-
 
 ## Get Started
 
@@ -22,18 +21,21 @@ pip install -r requirements.txt
 ### Configuration
 
 You can specify all configuration parameters for individual runs in `configs` and run a specific setting.
-The main configuration files are in `configs/datasets_dll_wt`.
+The main configuration files are located in `configs/datasets_dll_wt`.
+
 
 #### Logging
-Note that the script will log metrics using Weights & Biases. To log the metrics, you'll need to add your API key in `model/utils/credentials.py`. To disable logging with wandb, set `use_wandb: False`.
+
+Note that the script will log metrics using Weights & Biases. To log the metrics, you must add your API key in `model/utils/credentials.py`. To disable logging with wandb, set `use_wandb: False`.
 
 #### Checkpoint Saving
-To save checkpoints locally and not on the Euler cluster you need to specify `save_scratch: False`
-If you are running scripts on Euler, and want to save them on the scratch space,  you need to add your username in `model/utils/credentials.py`
+
+To save checkpoints locally and not on the Euler cluster, you need to specify `save_scratch: False`
+If you are running scripts on Euler and want to save them on the scratch space,  you need to add your username in `model/utils/credentials.py`
 
 ### Run Experiments
 
-You can run an individual configuration:
+You can run an individual configuration file:
 
 ```
 python run.py --config_path /path/to/config
